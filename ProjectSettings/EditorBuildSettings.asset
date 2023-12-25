@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_TrashyTreasure/!DevTest/Ryan'sSecretStash/SteamTest.unity
+    guid: b3690d76db522124abd0524a67826359
   m_configObjects: {}
