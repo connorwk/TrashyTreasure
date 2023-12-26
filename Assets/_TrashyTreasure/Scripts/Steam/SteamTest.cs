@@ -12,7 +12,7 @@ namespace TrashyTreasure
     {
         [SyncVar]
         [HideInInspector]
-        public string outputTextValue;
+        public string outputTextValue = "";
         [SerializeField]
         private TextMeshProUGUI outputText;
 
@@ -27,15 +27,16 @@ namespace TrashyTreasure
             Debug.Log(SteamFriends.GetPersonaName());
         }
 
-        private void Update()
-        {
-            outputText.text = outputTextValue;
-        }
+        //private void Update()
+        //{
+        //    outputText.text = outputTextValue;
+        //}
 
         [Server]
         public void SetOutputText(string newText)
         {
-            outputTextValue = newText;
+            outputTextValue += newText + "\n";
+            outputText.text = outputTextValue;
         }
     }
 }
