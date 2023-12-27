@@ -100,11 +100,13 @@ namespace TrashyTreasure
             networkManager.networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HostAddressKey);
             steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has joined!");
             networkManager.StartClient();
+            NetworkClient.Ready();
             buttons.SetActive(false);
 
             AddPlayerEntry();
 
             steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
+            steamTest.UpdateOutputText();
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has entered a lobby");
         }

@@ -51,9 +51,10 @@ namespace TrashyTreasure
         [Command(requiresAuthority =false)]
         public void SetOutputText(string newText)
         {
-            outputTextValue += newText + "\n";
-            ConsoleLog.Log("Updated text value: " + outputTextValue);
-            outputText.text = outputTextValue;
+            //outputTextValue += newText + "\n";
+            //ConsoleLog.Log("Updated text value: " + outputTextValue);
+            //outputText.text = outputTextValue;
+            LocalSetOutputText(newText);
         }
 
         [Server]
@@ -62,6 +63,11 @@ namespace TrashyTreasure
             outputTextValue += newText + "\n";
             ConsoleLog.Log("Updated text value locally: " + outputTextValue);
             outputText.text = outputTextValue;
-        }    
+        }
+
+        public void UpdateOutputText()
+        {
+            outputText.text = outputTextValue;
+        }
     }
 }
