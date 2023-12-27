@@ -29,8 +29,8 @@ namespace TrashyTreasure
 
             if (authority && (!SteamManager.Initialized || isServer)) return;
 
-            outputTextValue += "Client start for: " + SteamFriends.GetPersonaName();
-            //SetOutputText("Client start for: " + SteamFriends.GetPersonaName());
+            //outputTextValue += "Client start for: " + SteamFriends.GetPersonaName() + "\n";
+            SetOutputText("Client start for: " + SteamFriends.GetPersonaName());
             ConsoleLog.Log("Client start for: " + SteamFriends.GetPersonaName(), true);
         }
 
@@ -50,14 +50,6 @@ namespace TrashyTreasure
         //    outputText.text = outputTextValue;
         //}
         /*
-        [Command(requiresAuthority =false)]
-        public void SetOutputText(string newText)
-        {
-            //outputTextValue += newText + "\n";
-            //ConsoleLog.Log("Updated text value: " + outputTextValue);
-            //outputText.text = outputTextValue;
-            LocalSetOutputText(newText);
-        }
 
         [Server]
         public void LocalSetOutputText(string newText)
@@ -75,6 +67,12 @@ namespace TrashyTreasure
             outputText.text = outputTextValue;
         }
         */
+        [Command(requiresAuthority =false)]
+        public void SetOutputText(string newText)
+        {
+            outputTextValue += newText + "\n";
+            ConsoleLog.Log("SetOutputText value: " + outputTextValue);
+        }
 
         private void UpdateOutputText(string oldText, string newText)
         {

@@ -99,16 +99,16 @@ namespace TrashyTreasure
             }
 
             networkManager.networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HostAddressKey);
-            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has joined!\n";
-            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has joined!");
+            //steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has joined!\n";
+            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has joined!");
             networkManager.StartClient();
             NetworkClient.Ready();
             buttons.SetActive(false);
 
             AddPlayerEntry();
 
-            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has entered a lobby!!!\n";
-            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
+            //steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has entered a lobby!!!\n";
+            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
             //steamTest.UpdateOutputText();
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has entered a lobby");
@@ -117,8 +117,8 @@ namespace TrashyTreasure
         private void OnConnectedToServer()
         {
             //steamTest.UpdateOutputText();
-            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has connected to server!!!\n";
-            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has connected to server!!!");
+            //steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has connected to server!!!\n";
+            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has connected to server!!!");
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has connected to server!!!");
             //steamTest.UpdateOutputText();
