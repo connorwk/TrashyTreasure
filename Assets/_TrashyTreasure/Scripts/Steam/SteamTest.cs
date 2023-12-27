@@ -27,7 +27,7 @@ namespace TrashyTreasure
 
             outputText.text = outputTextValue;
 
-            if (!SteamManager.Initialized || isServer) return;
+            if (authority && (!SteamManager.Initialized || isServer)) return;
 
             SetOutputText("Client start for: " + SteamFriends.GetPersonaName());
             ConsoleLog.Log("Client start for: " + SteamFriends.GetPersonaName(), true);
@@ -48,7 +48,7 @@ namespace TrashyTreasure
         //    outputText.text = outputTextValue;
         //}
 
-        [Command]
+        [Command(requiresAuthority =false)]
         public void SetOutputText(string newText)
         {
             outputTextValue += newText + "\n";
