@@ -14,6 +14,7 @@ namespace TrashyTreasure
         Plane plane = new Plane(Vector3.down, 0);
         
         private Vector2 aim;
+        private Vector2 move;
         private bool isGamepad;
 
         private CharacterController controller;
@@ -46,11 +47,10 @@ namespace TrashyTreasure
         // Update is called once per frame
         void Update()
         {
-            aim = inputActions.CharControls.Aim.ReadValue<Vector2>();
-            Debug.Log(aim);
             Vector3 worldPos = new Vector3();
 
             if (isGamepad) {
+                aim = Gamepad.current.rightStick.ReadValue();
                 if (Mathf.Abs(aim.x) > 0 || Mathf.Abs(aim.y) > 0) {
                     Vector3 playerDir = Vector3.right * aim.x + Vector3.forward * aim.y;
 
@@ -60,6 +60,7 @@ namespace TrashyTreasure
                     }
                 }
             } else {
+                aim = Mouse.current.delta.ReadValue();
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 plane.distance = gameObject.transform.position.y;
                 if(plane.Raycast(ray, out float distance)) {
