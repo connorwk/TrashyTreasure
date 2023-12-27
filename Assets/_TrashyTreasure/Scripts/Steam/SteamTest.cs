@@ -63,8 +63,10 @@ namespace TrashyTreasure
             outputTextValue += newText + "\n";
             ConsoleLog.Log("Updated text value locally: " + outputTextValue);
             outputText.text = outputTextValue;
+            UpdateOutputText();
         }
 
+        [ClientRpc]
         public void UpdateOutputText()
         {
             outputText.text = outputTextValue;

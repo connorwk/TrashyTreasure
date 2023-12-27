@@ -106,16 +106,18 @@ namespace TrashyTreasure
             AddPlayerEntry();
 
             steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
-            steamTest.UpdateOutputText();
+            //steamTest.UpdateOutputText();
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has entered a lobby");
         }
 
         private void OnConnectedToServer()
         {
+            //steamTest.UpdateOutputText();
             steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has connected to server!!!");
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has connected to server!!!");
+            //steamTest.UpdateOutputText();
         }
 
         private void AddPlayerEntry()
