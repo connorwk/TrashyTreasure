@@ -11,7 +11,7 @@ namespace TrashyTreasure
 {
     public class SteamTest : NetworkBehaviour
     {
-        [SyncVar]
+        [SyncVar (hook = nameof(UpdateOutputText))]
         [HideInInspector]
         public string outputTextValue = "";
         [SerializeField]
@@ -47,7 +47,7 @@ namespace TrashyTreasure
         //{
         //    outputText.text = outputTextValue;
         //}
-
+        /*
         [Command(requiresAuthority =false)]
         public void SetOutputText(string newText)
         {
@@ -69,6 +69,26 @@ namespace TrashyTreasure
         [ClientRpc]
         public void UpdateOutputText()
         {
+            ConsoleLog.Log("Update Text");
+            outputText.text = outputTextValue;
+        }
+        */
+
+        public void SetOutputText(string newText)
+        {
+            outputTextValue += newText + "\n";
+            ConsoleLog.Log("Updated text value: " + outputTextValue);
+        }
+
+        public void LocalSetOutputText(string newText)
+        {
+            outputTextValue += newText + "\n";
+            ConsoleLog.Log("Updated text value locally: " + outputTextValue);
+        }
+
+        public void UpdateOutputText(string oldText, string newText)
+        {
+            ConsoleLog.Log("Update Text");
             outputText.text = outputTextValue;
         }
     }
