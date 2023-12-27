@@ -76,8 +76,8 @@ namespace TrashyTreasure
 
             SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby),
                                           HostAddressKey, SteamUser.GetSteamID().ToString());
-
-            steamTest.LocalSetOutputText(SteamFriends.GetPersonaName() + " created a lobby!!!");
+            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " created a lobby!!!\n";
+            //steamTest.LocalSetOutputText(SteamFriends.GetPersonaName() + " created a lobby!!!");
 
             ConsoleLog.Log("Lobby created successfully.");
         }
@@ -92,20 +92,23 @@ namespace TrashyTreasure
         {
             if (NetworkServer.active)
             {
-                steamTest.LocalSetOutputText(SteamFriends.GetPersonaName() + " entered the lobby as host!");
+                steamTest.outputTextValue += SteamFriends.GetPersonaName() + " entered the lobby as host!\n";
+                //steamTest.LocalSetOutputText(SteamFriends.GetPersonaName() + " entered the lobby as host!");
                 ConsoleLog.Log("Network server is active for : " + SteamFriends.GetPersonaName());
                 return;
             }
 
             networkManager.networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HostAddressKey);
-            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has joined!");
+            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has joined!\n";
+            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has joined!");
             networkManager.StartClient();
             NetworkClient.Ready();
             buttons.SetActive(false);
 
             AddPlayerEntry();
 
-            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
+            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has entered a lobby!!!\n";
+            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
             //steamTest.UpdateOutputText();
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has entered a lobby");
@@ -114,7 +117,8 @@ namespace TrashyTreasure
         private void OnConnectedToServer()
         {
             //steamTest.UpdateOutputText();
-            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has connected to server!!!");
+            steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has connected to server!!!\n";
+            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has connected to server!!!");
 
             ConsoleLog.Log(SteamFriends.GetPersonaName() + " has connected to server!!!");
             //steamTest.UpdateOutputText();
