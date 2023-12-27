@@ -3,6 +3,7 @@ using Steamworks;
 using System;
 using UnityEngine;
 using TMPro;
+using HammerElf.Tools.Utilities;
 
 namespace TrashyTreasure
 {
@@ -41,18 +42,18 @@ namespace TrashyTreasure
             {
                 if (!SteamUser.BLoggedOn())
                 {
-                    Debug.LogWarning("Not connected to Steam.");
+                    ConsoleLog.LogWarning("Not connected to Steam.");
                     return;
                 }
             }
             catch (InvalidOperationException e)
             {
-                Debug.LogError("InvalidOperationException occurred at HostLobby\n" + e.Message);
+                ConsoleLog.LogError("InvalidOperationException occurred at HostLobby\n" + e.Message);
                 throw new Exception("InvalidOperationException occurred at HostLobby\n" + e.Message);
             }
             catch (Exception e)
             {
-                Debug.LogError("Exception (" + e + ") occurred at HostLobby\n" + e.Message);
+                ConsoleLog.LogError("Exception (" + e + ") occurred at HostLobby\n" + e.Message);
                 throw new Exception("Exception (" + e + ") occurred at HostLobby\n" + e.Message);
             }
 
@@ -76,20 +77,24 @@ namespace TrashyTreasure
             SteamMatchmaking.SetLobbyData(new CSteamID(callback.m_ulSteamIDLobby),
                                           HostAddressKey, SteamUser.GetSteamID().ToString());
 
-            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has hosted a lobby!!!");
+            steamTest.LocalSetOutputText(SteamFriends.GetPersonaName() + " created a lobby!!!");
 
-            Debug.Log("Lobby created successfully.");
+            ConsoleLog.Log("Lobby created successfully.");
         }
 
         private void OnGameLobbyJoinRequested(GameLobbyJoinRequested_t callback)
         {
             SteamMatchmaking.JoinLobby(callback.m_steamIDLobby);
-            steamTest.SetOutputText(SteamFriends.GetPersonaName() + " is joining!");
+            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " is joining!");
         }
 
         private void OnLobbyEntered(LobbyEnter_t callback)
         {
-            if (NetworkServer.active) return;
+            if (NetworkServer.active)
+            {
+                //steamTest.LocalSetOutputText(SteamFriends.GetPersonaName() + " entered the lobby as host!");
+                return;
+            }
 
             networkManager.networkAddress = SteamMatchmaking.GetLobbyData(new CSteamID(callback.m_ulSteamIDLobby), HostAddressKey);
             steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has joined!");
@@ -98,7 +103,9 @@ namespace TrashyTreasure
 
             AddPlayerEntry();
 
-            Debug.Log("Player joined lobby");
+            //steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
+
+            ConsoleLog.Log("Player joined lobby");
         }
 
         private void AddPlayerEntry()
