@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TopDownWalker_LookAtMouse
       objectReference: {fileID: 0}
+    - target: {fileID: 1823403780643940, guid: 8dfc15a469c11674591a3365edc0fb9a, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4077489497055574, guid: 8dfc15a469c11674591a3365edc0fb9a, type: 3}
       propertyPath: m_LocalRotation.w
       value: 0.92387956

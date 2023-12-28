@@ -55,7 +55,7 @@ namespace TrashyTreasure
                     Vector3 playerDir = Vector3.right * aim.x + Vector3.forward * aim.y;
 
                     if (playerDir.sqrMagnitude > 0.0f) {
-                        Quaternion newRot = Quaternion.LookRotation(playerDir, Vector3.up) * Quaternion.Euler(0, 45, 0);
+                        Quaternion newRot = Quaternion.LookRotation(playerDir, Vector3.up);
                         transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, Time.deltaTime * gamepadDamping);
                     }
                 }
@@ -66,7 +66,7 @@ namespace TrashyTreasure
                 if(plane.Raycast(ray, out float distance)) {
                     worldPos = ray.GetPoint(distance) - gameObject.transform.parent.gameObject.transform.position;
                 }
-                var rotation = Quaternion.LookRotation(worldPos);
+                var rotation = Quaternion.LookRotation(worldPos, Vector3.up);
                 transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * mouseDamping);
             }
         }
