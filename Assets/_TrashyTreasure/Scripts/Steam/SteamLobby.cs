@@ -10,6 +10,9 @@ namespace TrashyTreasure
     public class SteamLobby : MonoBehaviour
     {
         [SerializeField]
+        private PlayerLobby playerLobby;
+
+        [SerializeField]
         private GameObject buttons;
         private NetworkManager networkManager;
         [SerializeField]
@@ -127,9 +130,9 @@ namespace TrashyTreasure
         private void AddPlayerEntry()
         {
             GameObject entry = Instantiate(playerEntry, playerDisplay);
+            playerLobby.AddEntry(new PlayerData(false, SteamFriends.GetPersonaName()));
             PlayerEntry entryScript = entry.GetComponent<PlayerEntry>();
-            entryScript.playerNameValue = SteamFriends.GetPersonaName();
-            entryScript.updateDisplay();
+            entryScript.updateDisplay(false, SteamFriends.GetPersonaName());
         }
 
         public void QuitGame()
