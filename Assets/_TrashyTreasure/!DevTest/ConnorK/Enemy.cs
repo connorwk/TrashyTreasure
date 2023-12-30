@@ -11,8 +11,9 @@ namespace TrashyTreasure
 {
     public class Enemy : MonoBehaviour
     {
-        public float timeBetweenAttacks;
-        public float attackLookDamping;
+        public int enemyHealth = 100;
+        public float timeBetweenAttacks = 0.5f;
+        public float attackLookDamping = 5f;
         
         private bool alreadyAttacked, playerInAttackRange;
 
@@ -63,30 +64,27 @@ namespace TrashyTreasure
         {
             UpdateAnimations();
 
-            if (alreadyAttacked) return;
-
             if (playerInAttackRange)
-                Attack();
-            else
-                agent.SetDestination(player.position);
-        }
-
-        private void Attack()
-        {
-            agent.SetDestination(transform.position);
-            var rotation = Quaternion.LookRotation(player.position - transform.position, Vector3.up);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * attackLookDamping);
-            if (!alreadyAttacked)
             {
-                alreadyAttacked = true;
-                Invoke(nameof(ResetAttack), timeBetweenAttacks);
+                agent.SetDestination(transform.position);
+                var rotation = Quaternion.LookRotation(player.position - transform.position, Vector3.up);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * attackLookDamping);
+                if (!alreadyAttacked)
+                {
+                    alreadyAttacked = true;
+                    Invoke(nameof(DealDamage), timeBetweenAttacks);
+                }
+            }
+            else
+            {
+                agent.SetDestination(player.position);
             }
         }
 
-        private void ResetAttack()
+        private void DealDamage()
         {
             if (playerInAttackRange) {
-                Debug.Log("Attack.");
+                // Todo, do damage to players in range.
                 playerStats.health -= 5;
             }
             alreadyAttacked = false;
@@ -95,10 +93,13 @@ namespace TrashyTreasure
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("Player")) playerInAttackRange = true;
+            // Todo, check characters names in list from GameManager in range.
+            //other.gameObject.GetComponent<CharacterStats>();
         }
 
         private void OnTriggerExit(Collider other)
         {
+            // Todo, remove characters in list from in range. Only set false when all are out of range.
             if (other.gameObject.CompareTag("Player")) playerInAttackRange = false;
         }
 
@@ -106,7 +107,6 @@ namespace TrashyTreasure
         {
             //Get controller velocity;
             Vector3 _velocity = GetComponent<NavMeshAgent>().velocity;
-            Debug.Log(_velocity);
 
             //Split up velocity;
             Vector3 _horizontalVelocity = VectorMath.RemoveDotVector(_velocity, transform.up);

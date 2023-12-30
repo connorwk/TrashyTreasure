@@ -7,7 +7,9 @@ namespace TrashyTreasure
 {
     public class GameManager : Singleton<GameManager>
     {
+        // Todo, make this a LIST of players, based on how many players are in the lobby.
         public GameObject playerObject;
+
 
         protected override void Awake()
         {
@@ -23,7 +25,7 @@ namespace TrashyTreasure
         // Update is called once per frame
         void Update()
         {
-        
+            
         }
     }
 }
