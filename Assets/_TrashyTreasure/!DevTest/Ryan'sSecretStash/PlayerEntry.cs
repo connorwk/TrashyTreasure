@@ -11,12 +11,12 @@ namespace TrashyTreasure
         [SerializeField]
         private TextMeshProUGUI playerNameText;
 
-        [HideInInspector]
-        public bool isReady;
-        [HideInInspector]
-        public string playerNameValue;
+        //[HideInInspector]
+        //public bool isReady;
+        //[HideInInspector]
+        //public string playerNameValue;
 
-        public void updateDisplay()
+        public void updateDisplay(bool isReady, string playerNameValue)
         {
             readyToggle.isOn = isReady;
             playerNameText.text = playerNameValue;

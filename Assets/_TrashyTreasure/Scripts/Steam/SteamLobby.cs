@@ -10,6 +10,9 @@ namespace TrashyTreasure
     public class SteamLobby : MonoBehaviour
     {
         [SerializeField]
+        private PlayerLobby playerLobby;
+
+        [SerializeField]
         private GameObject buttons;
         private NetworkManager networkManager;
         [SerializeField]
@@ -61,7 +64,7 @@ namespace TrashyTreasure
 
             SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, networkManager.maxConnections);
 
-            AddPlayerEntry();
+            //AddPlayerEntry();
         }
 
         private void OnLobbyCreated(LobbyCreated_t callback)
@@ -105,7 +108,7 @@ namespace TrashyTreasure
             NetworkClient.Ready();
             buttons.SetActive(false);
 
-            AddPlayerEntry();
+            //AddPlayerEntry();
 
             //steamTest.outputTextValue += SteamFriends.GetPersonaName() + " has entered a lobby!!!\n";
             steamTest.SetOutputText(SteamFriends.GetPersonaName() + " has entered a lobby!!!");
@@ -127,9 +130,9 @@ namespace TrashyTreasure
         private void AddPlayerEntry()
         {
             GameObject entry = Instantiate(playerEntry, playerDisplay);
+            playerLobby.AddEntry(new PlayerData(SteamFriends.GetPersonaName()));
             PlayerEntry entryScript = entry.GetComponent<PlayerEntry>();
-            entryScript.playerNameValue = SteamFriends.GetPersonaName();
-            entryScript.updateDisplay();
+            entryScript.updateDisplay(false, SteamFriends.GetPersonaName());
         }
 
         public void QuitGame()
