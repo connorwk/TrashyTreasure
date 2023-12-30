@@ -1438,7 +1438,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 245347560}
         m_TargetAssemblyTypeName: TrashyTreasure.PlayerLobby, Assembly-CSharp
         m_MethodName: JoinParty
         m_Mode: 1

@@ -67,6 +67,8 @@ namespace TrashyTreasure
             outputText.text = outputTextValue;
         }
         */
+
+        //Change use of requiresAuthority to be used to request authority instead of ignoring authority.
         [Command(requiresAuthority =false)]
         public void SetOutputText(string newText)
         {

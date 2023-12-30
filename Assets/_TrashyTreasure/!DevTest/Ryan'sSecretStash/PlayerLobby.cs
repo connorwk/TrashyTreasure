@@ -73,7 +73,8 @@ namespace TrashyTreasure
             ConsoleLog.Log("End of JoinParty. List length: " + playerEntries.Count);
         }
 
-        [Command]
+        //Change use of requiresAuthority to be used to request authority instead of ignoring authority.
+        [Command(requiresAuthority = false)]
         public void AddEntry(PlayerData newEntry)
         {
             ConsoleLog.Log("Start of AddEntry. List length: " + playerEntries.Count);
