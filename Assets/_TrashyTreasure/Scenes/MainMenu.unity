@@ -260,8 +260,8 @@ MonoBehaviour:
   sendRate: 60
   autoStartServerBuild: 0
   autoConnectClientBuild: 0
-  offlineScene: Assets/_TrashyTreasure/!DevTest/ConnorK/MainMenu.unity
-  onlineScene: Assets/_TrashyTreasure/!DevTest/ConnorK/MirrorRoomOnline.unity
+  offlineScene: Assets/_TrashyTreasure/Scenes/MainMenu.unity
+  onlineScene: Assets/_TrashyTreasure/Scenes/MirrorRoomOnline.unity
   transport: {fileID: 245347561}
   networkAddress: localhost
   maxConnections: 100
@@ -290,8 +290,8 @@ MonoBehaviour:
   showRoomGUI: 1
   minPlayers: 1
   roomPlayerPrefab: {fileID: 114033720796874720, guid: 8dfc068be4c12ec43bb2f8fce810f370, type: 3}
-  RoomScene: Assets/_TrashyTreasure/!DevTest/ConnorK/MirrorRoomOnline.unity
-  GameplayScene: Assets/_TrashyTreasure/!DevTest/ConnorK/DemoGameplay.unity
+  RoomScene: Assets/_TrashyTreasure/Scenes/MirrorRoomOnline.unity
+  GameplayScene: Assets/_TrashyTreasure/Scenes/DemoGameplay.unity
   _allPlayersReady: 0
   roomSlots: []
   clientIndex: 0
