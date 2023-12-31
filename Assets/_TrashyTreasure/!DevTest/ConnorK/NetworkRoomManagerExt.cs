@@ -13,10 +13,6 @@ namespace TrashyTreasure
     [AddComponentMenu("")]
     public class NetworkRoomManagerExt : NetworkRoomManager
     {
-        [Header("Spawner Setup")]
-        [Tooltip("Reward Prefab for the Spawner")]
-        public GameObject rewardPrefab;
-
         public static new NetworkRoomManagerExt singleton { get; private set; }
 
         private const string HostAddressKey = "HostAddress";

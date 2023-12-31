@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
 
-namespace TrashyTreasure
+namespace CMF
 {
-    public class MouseLook : MonoBehaviour
+    public class MouseLook : CharacterInput
     {
         public float gamepadDamping;
         public float mouseDamping;
@@ -17,16 +17,16 @@ namespace TrashyTreasure
         private Vector2 move;
         private bool isGamepad;
 
-        private CharacterController controller;
-
         private InputActions inputActions;
         private PlayerInput playerInput;
+        private InputAction moveAction;
+        public Transform modelTransform;
 
         private void Awake()
         {
-            controller = GetComponent<CharacterController>();
             inputActions = new InputActions();
             playerInput = GetComponent<PlayerInput>();
+            moveAction = playerInput.actions["Move"];
         }
 
         private void OnEnable()
@@ -48,7 +48,6 @@ namespace TrashyTreasure
         void Update()
         {
             Vector3 worldPos = new Vector3();
-
             if (isGamepad) {
                 aim = Gamepad.current.rightStick.ReadValue();
                 if (Mathf.Abs(aim.x) > 0 || Mathf.Abs(aim.y) > 0) {
@@ -56,19 +55,35 @@ namespace TrashyTreasure
 
                     if (playerDir.sqrMagnitude > 0.0f) {
                         Quaternion newRot = Quaternion.LookRotation(playerDir, Vector3.up);
-                        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, Time.deltaTime * gamepadDamping);
+                        modelTransform.rotation = Quaternion.RotateTowards(modelTransform.rotation, newRot, Time.deltaTime * gamepadDamping);
                     }
                 }
             } else {
                 aim = Mouse.current.delta.ReadValue();
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                plane.distance = gameObject.transform.position.y;
+                plane.distance = modelTransform.position.y;
                 if(plane.Raycast(ray, out float distance)) {
-                    worldPos = ray.GetPoint(distance) - gameObject.transform.parent.gameObject.transform.position;
+                    worldPos = ray.GetPoint(distance) - transform.position;
                 }
                 var rotation = Quaternion.LookRotation(worldPos, Vector3.up);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * mouseDamping);
+                modelTransform.rotation = Quaternion.Slerp(modelTransform.rotation, rotation, Time.deltaTime * mouseDamping);
             }
+        }
+
+        // TODO Move this elsewhere?
+        public override float GetHorizontalMovementInput()
+        {
+            return moveAction.ReadValue<Vector2>().x;
+        }
+
+        public override float GetVerticalMovementInput()
+        {
+            return moveAction.ReadValue<Vector2>().y;
+        }
+
+        public override bool IsJumpKeyPressed()
+        {
+            return false;
         }
     }
 }

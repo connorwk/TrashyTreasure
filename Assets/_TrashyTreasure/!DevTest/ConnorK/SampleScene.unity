@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <UseDontDestroyOnLoad>k__BackingField: 1
-  playerObject: {fileID: 3953445199623444359, guid: 9aba3be8ecf877a40a145ab031bcc802, type: 3}
+  playerObject: {fileID: 3953445199623444359, guid: daf76f9a4557f404ca72389b4bf0a4fe, type: 3}
 --- !u!4 &792259548
 Transform:
   m_ObjectHideFlags: 0

@@ -268,7 +268,7 @@ MonoBehaviour:
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 1480027675339556, guid: f11dffdb6306a24498fc11fe6c3cd387, type: 3}
+  playerPrefab: {fileID: 3953445199623444359, guid: daf76f9a4557f404ca72389b4bf0a4fe, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
   spawnPrefabs: []
@@ -295,7 +295,6 @@ MonoBehaviour:
   _allPlayersReady: 0
   roomSlots: []
   clientIndex: 0
-  rewardPrefab: {fileID: 0}
 --- !u!114 &245347564
 MonoBehaviour:
   m_ObjectHideFlags: 0
