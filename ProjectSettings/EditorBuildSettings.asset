@@ -5,7 +5,16 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_TrashyTreasure/!DevTest/Ryan'sSecretStash/SteamTest.unity
     guid: b3690d76db522124abd0524a67826359
+  - enabled: 1
+    path: Assets/_TrashyTreasure/!DevTest/ConnorK/MainMenu.unity
+    guid: 1d46002ca9059cc4e85575abb3ee5459
+  - enabled: 1
+    path: Assets/_TrashyTreasure/!DevTest/ConnorK/MirrorRoomOnline.unity
+    guid: b5ed2e02ff5b9044e99b4f3458c40396
+  - enabled: 1
+    path: Assets/_TrashyTreasure/!DevTest/ConnorK/DemoGameplay.unity
+    guid: 6201c0901948e7f448a3e0285c392ec5
   m_configObjects: {}
