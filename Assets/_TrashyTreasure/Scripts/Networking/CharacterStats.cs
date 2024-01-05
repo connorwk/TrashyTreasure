@@ -27,6 +27,8 @@ namespace TrashyTreasure
         public PlayerInput charPlayerInput;
         [Required]
         public MouseLook charMouseLook;
+        [Required]
+        public AudioListener charAudioListener;
 
         void Awake()
         {
@@ -58,6 +60,7 @@ namespace TrashyTreasure
             charCamera.enabled = true;
             charPlayerInput.enabled = true;
             charMouseLook.enabled = true;
+            charAudioListener.enabled = true;
             this.enabled = true;
         }
 
@@ -69,6 +72,7 @@ namespace TrashyTreasure
             charCamera.enabled = false;
             charPlayerInput.enabled = false;
             charMouseLook.enabled = false;
+            charAudioListener.enabled = false;
             this.enabled = false;
         }
 
