@@ -10,7 +10,6 @@ using HammerElf.Tools.Utilities;
 
 namespace TrashyTreasure
 {
-    [AddComponentMenu("")]
     public class NetworkRoomManagerExt : NetworkRoomManager
     {
         public static new NetworkRoomManagerExt singleton { get; private set; }
