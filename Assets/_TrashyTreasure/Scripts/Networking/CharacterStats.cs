@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using HammerElf.Tools.Utilities;
 using Sirenix.OdinInspector;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 namespace TrashyTreasure
 {
@@ -16,7 +17,9 @@ namespace TrashyTreasure
         public Transform playerTransform;
 
         [Required]
-        public AdvancedWalkerController charController;
+        public CharacterNetworkTransformUnreliable netTransform;
+        [Required]
+        public WalkerControllerExt charController;
         [Required]
         public Mover moverScript;
         [Required]
@@ -27,10 +30,12 @@ namespace TrashyTreasure
         public PlayerInput charPlayerInput;
         [Required]
         public MouseLook charMouseLook;
+        [Required]
+        public AudioListener charAudioListener;
 
         void Awake()
         {
-            
+            charController.netTransform = netTransform;
         }
 
         protected override void OnValidate()
@@ -53,23 +58,27 @@ namespace TrashyTreasure
         private void EnableCharControl()
         {
             charRigidbody.isKinematic = false;
-            charController.enabled = true;
+            //charController.enabled = true;
             moverScript.enabled = true;
             charCamera.enabled = true;
             charPlayerInput.enabled = true;
             charMouseLook.enabled = true;
+            charAudioListener.enabled = true;
             this.enabled = true;
+            charController.networkPlayer = false;
         }
 
         private void DisableCharControl()
         {
             charRigidbody.isKinematic = true;
-            charController.enabled = false;
+            //charController.enabled = false;
             moverScript.enabled = false;
             charCamera.enabled = false;
             charPlayerInput.enabled = false;
             charMouseLook.enabled = false;
+            charAudioListener.enabled = false;
             this.enabled = false;
+            charController.networkPlayer = true;
         }
 
         // Update is called once per frame
