@@ -41,6 +41,8 @@ namespace TrashyTreasure
 
         public void HostLobby()
         {
+            //Putting a lot of extra error checking in here. Leaving it, since it won't break anything, for future testing to
+            //see what makes Steam angry.
             try
             {
                 if (!SteamUser.BLoggedOn())

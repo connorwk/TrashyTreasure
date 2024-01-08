@@ -963,17 +963,19 @@ MonoBehaviour:
   autoStartServerBuild: 0
   autoConnectClientBuild: 0
   offlineScene: Assets/_TrashyTreasure/Scenes/MainMenu.unity
-  onlineScene: Assets/_TrashyTreasure/Scenes/MirrorRoomOnline.unity
+  onlineScene: Assets/_TrashyTreasure/Scenes/MainMenu.unity
   transport: {fileID: 245347561}
   networkAddress: localhost
   maxConnections: 100
   disconnectInactiveConnections: 0
   disconnectInactiveTimeout: 60
   authenticator: {fileID: 0}
-  playerPrefab: {fileID: 3953445199623444359, guid: daf76f9a4557f404ca72389b4bf0a4fe, type: 3}
+  playerPrefab: {fileID: 1438761832980084, guid: 611d705b7ebcb8348929c7a673bd0ecf, type: 3}
   autoCreatePlayer: 1
   playerSpawnMethod: 1
-  spawnPrefabs: []
+  spawnPrefabs:
+  - {fileID: 3953445199623444359, guid: daf76f9a4557f404ca72389b4bf0a4fe, type: 3}
+  - {fileID: 1588750985201798, guid: 8dfc068be4c12ec43bb2f8fce810f370, type: 3}
   exceptionsDisconnect: 1
   snapshotSettings:
     bufferTimeMultiplier: 2
@@ -2997,7 +2999,43 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 970048444}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 245347563}
+        m_TargetAssemblyTypeName: Mirror.NetworkManager, Mirror
+        m_MethodName: StartHost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 815805885}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &970048444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3049,7 +3087,7 @@ GameObject:
   - component: {fileID: 972891150}
   - component: {fileID: 972891149}
   m_Layer: 5
-  m_Name: SavesButton
+  m_Name: ProfilesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3726,7 +3764,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1142938218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1142938218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3995,7 +4045,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Saves
+  m_text: Profiles
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4a49eb2e5c92b314a891c9ec68da2ed4, type: 2}
   m_sharedMaterial: {fileID: 1713010165055640473, guid: 4a49eb2e5c92b314a891c9ec68da2ed4, type: 2}

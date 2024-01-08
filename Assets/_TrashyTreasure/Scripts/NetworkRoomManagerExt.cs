@@ -43,20 +43,17 @@ namespace TrashyTreasure
         public override void OnRoomStartHost()
         {
             base.OnRoomStartHost();
-            ConsoleLog.Log("OnRoomStartHost");
             SteamMatchmaking.CreateLobby(ELobbyType.k_ELobbyTypeFriendsOnly, maxConnections);
         }
 
         public override void OnRoomStartClient()
         {
             base.OnRoomStartClient();
-            ConsoleLog.Log("OnRoomStartClient");
         }
 
         public override void OnRoomStopHost()
         {
             base.OnRoomStopHost();
-            ConsoleLog.Log("OnRoomStopHost");
             if (lobbyID.IsValid()) SteamMatchmaking.LeaveLobby(lobbyID);
             lobbyID.Clear();
         }
@@ -64,7 +61,6 @@ namespace TrashyTreasure
         public override void OnRoomStopClient()
         {
             base.OnRoomStopClient();
-            ConsoleLog.Log("OnRoomStopClient");
             if (lobbyID.IsValid()) SteamMatchmaking.LeaveLobby(lobbyID);
             lobbyID.Clear();
         }
@@ -163,6 +159,11 @@ namespace TrashyTreasure
 
                 ServerChangeScene(GameplayScene);
             }
+        }
+
+        public void CallStartHost()
+        {
+            StartHost();
         }
     }
 }
