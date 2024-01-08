@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Mirror
@@ -10,6 +11,10 @@ namespace Mirror
         [Header("Target Rotation")]
         [Tooltip("The Transform component to sync rotation. May be on on this GameObject, or on a child.")]
         public Transform targetRot;
+
+        private Vector3 prevPos;
+        [HideInInspector]
+        public Vector3 velocity;
 
         // get local/world rotation
         protected override Quaternion GetRotation() =>
@@ -22,6 +27,20 @@ namespace Mirror
                 targetRot.localRotation = rotation;
             else
                 targetRot.rotation = rotation;
+        }
+
+        // set local/world position
+        protected override void SetPosition(Vector3 position)
+        {
+            // TODO
+            //velocity = (position - prevPos) / Time.deltaTime;
+
+            if (coordinateSpace == CoordinateSpace.Local)
+                target.localPosition = position;
+            else
+                target.position = position;
+            
+            prevPos = position;
         }
     }
 }

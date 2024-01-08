@@ -52,7 +52,8 @@ MonoBehaviour:
   syncInterval: 0
   health: 100
   playerTransform: {fileID: 8117302868606472790}
-  charController: {fileID: 8159810442352412518}
+  netTransform: {fileID: 6747526032746352858}
+  charController: {fileID: 7792277417550204428}
   moverScript: {fileID: 8159904429967331740}
   charCamera: {fileID: 8137846757787267462}
   charRigidbody: {fileID: 8099830008780331220}
@@ -112,6 +113,7 @@ MonoBehaviour:
   rotationSensitivity: 0.01
   scaleSensitivity: 0.01
   targetRot: {fileID: 8122478311914908134}
+  velocity: {x: 0, y: 0, z: 0}
 --- !u!1 &8118678438503451462
 GameObject:
   m_ObjectHideFlags: 0
@@ -614,7 +616,7 @@ GameObject:
   - component: {fileID: 8164615876676349006}
   - component: {fileID: 8159904429967331740}
   - component: {fileID: 8099830008780331220}
-  - component: {fileID: 8159810442352412518}
+  - component: {fileID: 7792277417550204428}
   - component: {fileID: 8160102960687185848}
   - component: {fileID: 8160302858326664918}
   - component: {fileID: 1269567106587692755}
@@ -721,16 +723,16 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8159810442352412518
+--- !u!114 &7792277417550204428
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8119681874679268482}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f5e44db14072ea4c964da3b192181c8, type: 3}
+  m_Script: {fileID: 11500000, guid: d7fcb053628f2ef41b2e971cbf6f3243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
@@ -744,6 +746,8 @@ MonoBehaviour:
   slopeLimit: 80
   useLocalMomentum: 1
   cameraTransform: {fileID: 0}
+  networkPlayer: 1
+  netTransform: {fileID: 0}
 --- !u!114 &8160102960687185848
 MonoBehaviour:
   m_ObjectHideFlags: 0
