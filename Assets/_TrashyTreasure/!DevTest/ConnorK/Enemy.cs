@@ -19,6 +19,7 @@ namespace TrashyTreasure
 
         private NavMeshAgent agent;
         private Transform    player;
+        //TODO CHANGE
         private CharacterStats playerStats;
 
 
@@ -53,7 +54,8 @@ namespace TrashyTreasure
 
         private void Awake()
         {
-            playerStats = GameManager.Instance.playerObject.GetComponent<CharacterStats>();
+            //TODO CHANGE
+            //playerStats = GameManager.Instance.playerObject.GetComponent<CharacterStats>();
             player = playerStats.playerTransform;
             agent = GetComponent<NavMeshAgent>();
             animator = GetComponentInChildren<Animator>();

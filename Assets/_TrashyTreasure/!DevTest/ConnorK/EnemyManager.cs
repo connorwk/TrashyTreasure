@@ -18,7 +18,7 @@ namespace TrashyTreasure
         void Awake()
         {
             enemies = new List<GameObject>();
-            Vector3 pos = GameManager.Instance.playerObject.transform.position;
+            Vector3 pos = new Vector3(0,0,0);//GameManager.Instance.playerObject.transform.position;
             foreach(var obj in EnemySpawner.Entities)
             {
                 Vector3 inter = pos - obj.transform.position;
