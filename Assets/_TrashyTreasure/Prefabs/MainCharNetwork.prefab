@@ -732,7 +732,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8119681874679268482}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fcb053628f2ef41b2e971cbf6f3243, type: 3}
+  m_Script: {fileID: 11500000, guid: adb5da45453b7194fb389c3a874b9f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 7
@@ -744,10 +744,10 @@ MonoBehaviour:
   gravity: 30
   slideGravity: 5
   slopeLimit: 80
-  useLocalMomentum: 1
-  cameraTransform: {fileID: 0}
+  useLocalMomentum: 0
+  cameraTransform: {fileID: 8117417457133530384}
   networkPlayer: 1
-  netTransform: {fileID: 0}
+  netTransform: {fileID: 6747526032746352858}
 --- !u!114 &8160102960687185848
 MonoBehaviour:
   m_ObjectHideFlags: 0
