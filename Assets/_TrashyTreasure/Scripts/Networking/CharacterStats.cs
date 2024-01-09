@@ -19,7 +19,7 @@ namespace TrashyTreasure
         [Required]
         public CharacterNetworkTransformUnreliable netTransform;
         [Required]
-        public WalkerControllerExt charController;
+        public AdvancedWalkerController charController;
         [Required]
         public Mover moverScript;
         [Required]
@@ -32,10 +32,12 @@ namespace TrashyTreasure
         public MouseLook charMouseLook;
         [Required]
         public AudioListener charAudioListener;
+        [Required]
+        public AnimationControl charAnimationController;
 
         void Awake()
         {
-            charController.netTransform = netTransform;
+            
         }
 
         protected override void OnValidate()
@@ -58,27 +60,27 @@ namespace TrashyTreasure
         private void EnableCharControl()
         {
             charRigidbody.isKinematic = false;
-            //charController.enabled = true;
+            charController.enabled = true;
             moverScript.enabled = true;
             charCamera.enabled = true;
             charPlayerInput.enabled = true;
             charMouseLook.enabled = true;
             charAudioListener.enabled = true;
+            charAnimationController.enabled = true;
             this.enabled = true;
-            charController.networkPlayer = false;
         }
 
         private void DisableCharControl()
         {
             charRigidbody.isKinematic = true;
-            //charController.enabled = false;
+            charController.enabled = false;
             moverScript.enabled = false;
             charCamera.enabled = false;
             charPlayerInput.enabled = false;
             charMouseLook.enabled = false;
             charAudioListener.enabled = false;
+            charAnimationController.enabled = false;
             this.enabled = false;
-            charController.networkPlayer = true;
         }
 
         // Update is called once per frame
