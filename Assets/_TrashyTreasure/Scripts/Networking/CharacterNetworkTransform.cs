@@ -28,19 +28,5 @@ namespace Mirror
             else
                 targetRot.rotation = rotation;
         }
-
-        // set local/world position
-        protected override void SetPosition(Vector3 position)
-        {
-            // TODO
-            //velocity = (position - prevPos) / Time.deltaTime;
-
-            if (coordinateSpace == CoordinateSpace.Local)
-                target.localPosition = position;
-            else
-                target.position = position;
-            
-            prevPos = position;
-        }
     }
 }
